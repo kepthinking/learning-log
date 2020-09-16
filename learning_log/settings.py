@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     # 我的应用程序
     'learning_logs',
-    'users'
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -123,23 +123,5 @@ LOGIN_URL = '/users/login/'
 
 # django-bootstrap3的设置
 BOOTSTRAP3 = {
-    'include_jquery': True
+    'include_jquery': True,
 }
-
-# Heroku设置
-if os.getcwd() == '/app':
-    import dj_database_url
-
-    DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
-    }
-    # 让request.is_secure()承认X-Forwarded-Proto头
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    # 支持所有的主机头（host header)
-    ALLOWED_HOSTS = ['*']
-    # 静态资产配置
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
